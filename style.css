@@ -54,3 +54,20 @@ button{
     text-align: center;
     height: 150px;
 }
+.builderView{
+    display: flex;
+    justify-content: center;
+}
+.options{
+    background-color: bisque;
+    width: 500px;
+    height: 600px;
+    margin: 10px;
+    text-align: center;
+}
+.squadProgress{
+    background-color: burlywood;
+    width: 60%;
+    height: 700px;
+
+}
