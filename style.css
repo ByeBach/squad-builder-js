@@ -22,7 +22,7 @@ h1, h2{
     justify-content: center;
     height: 100px;
 }
-.medButtons, .deliver{
+.medButtons, .deliver, .choseTypeSbc{
     display: flex;
     flex-direction: row;
     justify-content: center;

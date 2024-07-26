@@ -16,10 +16,7 @@ document.getElementById('upload').addEventListener('change', function(event){
 });
 
 function clearView(){
-    document.getElementById('content').innerHTML = ''
-}
-function firstView(){
-
+    document.getElementById('content').innerHTML = ``
 }
 
 function generatePLayerCard(data){
@@ -32,10 +29,13 @@ function generatePLayerCard(data){
             html +=`<p>${element.Country}</p>`
             html +=`<p>${element.Rarity}</p>`
             html +=`<p>${element.League} ${element.Club} </p>`
+            html +=`<button id="test">aplicar filtro</button>`
         html += `</div>`
     });
     document.getElementById('content').innerHTML = html;
 }
+
+window.addEventListener("DOMContentLoaded", generatePLayerCard(created83()));
 
 const btn83 = document.getElementById("button83")
 btn83.addEventListener("click", (e) => {
