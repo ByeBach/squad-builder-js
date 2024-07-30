@@ -32,6 +32,17 @@ function isSoldPlayer(playerName, playerMed){
     }
 }
 
+export function reRollplayer(lastname, rating, IDPlayers){
+    console.log(IDPlayers);
+    let gold = JSON.parse(localStorage.getItem('gold'));
+    //const test = gold.find((playerTest) => IDPlayers.includes(playerTest.Id));
+    //console.log({test});
+    const pick = gold.find((player) => player.Lastname.trim() != lastname.trim() && player.Rating == rating && !IDPlayers.includes(player.Id));
+    //console.log(pick);
+    return pick;
+    
+}
+
 export function created83(){
     createdMed83 = [];
     let playerUsed = [];

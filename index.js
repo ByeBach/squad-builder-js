@@ -1,5 +1,5 @@
 import {proccess, deliverPlayer, resetList} from './proccessCSV.js';
-import {created83, created84, created85, created86,created87,created88,created89} from './createMed.js';
+import {created83, created84, created85, created86,created87,created88,created89,reRollplayer} from './createMed.js';
 
 document.getElementById('upload').addEventListener('change', function(event){
     const file = event.target.files[0];
@@ -20,23 +20,38 @@ function clearView(){
 }
 
 function generatePLayerCard(data){
+    let IDs = [];
     let html = '';
     document.getElementById('content').innerHTML = html;
     data.forEach(element => {
+        IDs.push(element.Id);
         html += `<div class='card' >`
+            html += `<span>${element.Id}</span>`
             html +=`<p id='playerRating'>${element.Rating}</p>`
             html +=`<p id='playerLastName'>${element.Lastname} </p>`
             html +=`<p>${element.Country}</p>`
             html +=`<p>${element.Rarity}</p>`
             html +=`<p>${element.League} ${element.Club} </p>`
-            html +=`<button id="test">aplicar filtro</button>`
+            html +=`<button class="test">Re-Roll</button>`
         html += `</div>`
     });
-    document.getElementById('content').innerHTML = html;
+    document.getElementById('content').innerHTML = html; 
+
+    document.querySelectorAll('.test').forEach(button => {
+        button.addEventListener('click', (event) =>{
+            event.preventDefault();
+            const clickedButton = event.target;
+            const card = clickedButton.closest('.card');
+            const rating = card.querySelector('#playerRating').innerText;
+            const lastname = card.querySelector('#playerLastName').innerText;
+            const test = reRollplayer(lastname,rating,IDs);
+            IDs.push(test.Id); //cada re roll guarda el id para no volver a mostrarlo
+            console.log(test)
+            //obtener otro jugador
+            //remplazar en el html
+        })
+    })
 }
-
-window.addEventListener("DOMContentLoaded", generatePLayerCard(created83()));
-
 const btn83 = document.getElementById("button83")
 btn83.addEventListener("click", (e) => {
     e.preventDefault();
